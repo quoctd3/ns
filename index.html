@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đồ ăn ngon cho Thùy Vân</title>
+    <title>Sổ Tay Món Ngon Thùy Vân</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-orange: #ff7e5f;
-            --warm-yellow: #feb47b;
-            --deep-brown: #432818;
-            --soft-cream: #fffaf0;
-            --sage-green: #99ae92;
+            --primary-pink: #ffafbd;
+            --soft-rose: #ffc3a0;
+            --deep-pink: #ff85a1;
+            --light-pink: #fff5f7;
+            --text-color: #7d4f50;
         }
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: var(--soft-cream);
-            color: var(--deep-brown);
+            background-color: var(--light-pink);
+            color: var(--text-color);
             background-image: url('https://www.transparenttextures.com/patterns/pantry.png');
         }
 
@@ -29,45 +29,57 @@
 
         .journal-card {
             background: white;
-            border-radius: 24px;
-            box-shadow: 0 4px 15px rgba(67, 40, 24, 0.05);
-            border: 1px solid #f0e4d7;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(255, 133, 161, 0.1);
+            border: 1px solid #ffe4e9;
             transition: all 0.3s ease;
             overflow: hidden;
         }
 
         .journal-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 20px rgba(67, 40, 24, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 133, 161, 0.2);
         }
 
         .input-focus:focus {
-            border-color: var(--primary-orange);
-            ring: 2px solid var(--primary-orange);
+            border-color: var(--deep-pink);
+            ring: 2px solid var(--deep-pink);
             outline: none;
         }
 
-        .btn-gradient {
-            background: linear-gradient(135deg, var(--primary-orange), var(--warm-yellow));
+        .btn-pink-gradient {
+            background: linear-gradient(135deg, #ff85a1, #ffafbd);
             color: white;
             transition: all 0.3s ease;
         }
 
         .tab-active {
-            color: var(--primary-orange);
+            color: white;
             font-weight: 700;
-            background: white;
-            box-shadow: 0 4px 12px rgba(255, 126, 95, 0.15);
+            background: var(--deep-pink);
+            box-shadow: 0 4px 10px rgba(255, 133, 161, 0.2);
         }
 
-        @keyframes steam {
-            0% { transform: translateY(0) scale(1); opacity: 0.5; }
-            50% { transform: translateY(-10px) scale(1.2); opacity: 0.8; }
-            100% { transform: translateY(-20px) scale(1.4); opacity: 0; }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
         }
 
-        .steam-icon {
-            animation: steam 2s infinite;
+        .heart-icon {
+            display: inline-block;
+            animation: heartBeat 1.5s infinite;
+            color: #ff4d6d;
+        }
+
+        /* Nút tích xanh đỏ nhỏ gọn trên mobile */
+        @media (max-width: 640px) {
+            .btn-action-mobile {
+                padding: 0.5rem 0.5rem !important;
+                font-size: 16px !important;
+            }
         }
 
         .card-grid {
@@ -81,80 +93,71 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
-        .animate-pop {
-            animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
     </style>
 </head>
 <body class="min-h-screen pb-24">
 
-    <header class="pt-12 pb-8 px-6 text-center">
+    <header class="pt-10 pb-6 px-6 text-center">
         <div class="max-w-4xl mx-auto">
             <div class="inline-block relative">
-                <i class="fas fa-mug-hot absolute -top-8 -left-8 text-2xl text-orange-400 steam-icon"></i>
-                <h1 class="text-5xl md:text-6xl mb-2 text-orange-600">
+                <i class="fas fa-heart absolute -top-6 -left-6 text-xl heart-icon"></i>
+                <h1 class="text-4xl md:text-5xl mb-2 text-pink-500">
                     Món Ngon Cho Thùy Vân
                 </h1>
             </div>
-            <p class="mt-4 text-orange-800/50 tracking-[0.2em] uppercase text-[10px] font-bold">
-                Nhok Shyn • Special Menu for Wife
+            <p class="mt-2 text-pink-300 tracking-[0.1em] uppercase text-[10px] font-bold">
+                Dành riêng cho công chúa của Shyn
             </p>
         </div>
     </header>
 
     <main class="max-w-5xl mx-auto px-4">
         
-        <!-- Các nút chức năng chính (Backup/Restore) -->
-        <div class="flex flex-wrap gap-3 mb-6 justify-center">
-             <button onclick="exportToZalo()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2">
-                <i class="fas fa-copy"></i> Gửi Zalo
+        <!-- Sao lưu / Nạp File -->
+        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+             <button onclick="exportToZalo()" class="bg-[#0084FF] hover:bg-blue-600 text-white px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-2">
+                <i class="fas fa-paper-plane"></i> Gửi Zalo
             </button>
-            <button onclick="downloadBackup()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2">
-                <i class="fas fa-download"></i> Lưu File (.json)
+            <button onclick="downloadBackup()" class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-2">
+                <i class="fas fa-cloud-download-alt"></i> Lưu File
             </button>
-            <label class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2 cursor-pointer">
-                <i class="fas fa-upload"></i> Nạp File
+            <label class="bg-rose-300 hover:bg-rose-400 text-white px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-sm transition-all flex items-center gap-2 cursor-pointer">
+                <i class="fas fa-cloud-upload-alt"></i> Nạp File
                 <input type="file" id="importFile" class="hidden" accept=".json" onchange="importBackup(event)">
             </label>
         </div>
 
-        <!-- Form nhập liệu -->
-        <section class="mb-10">
-            <details class="bg-white rounded-[25px] shadow-sm border border-orange-100 overflow-hidden group">
-                <summary class="list-none p-5 cursor-pointer flex justify-between items-center text-orange-700 font-bold uppercase text-xs tracking-widest">
-                    <span><i class="fas fa-plus-circle mr-2"></i> Thêm món mới vào sổ tay</span>
+        <!-- Form thêm mới -->
+        <section class="mb-8">
+            <details class="bg-white rounded-[20px] shadow-sm border border-pink-100 overflow-hidden group">
+                <summary class="list-none p-4 cursor-pointer flex justify-between items-center text-pink-400 font-bold uppercase text-[10px] tracking-widest">
+                    <span><i class="fas fa-plus mr-2"></i> Thêm quán mới</span>
                     <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
                 </summary>
-                <div class="p-6 pt-0 border-t border-orange-50">
-                    <form id="restaurantForm" class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="p-6 pt-0 border-t border-pink-50">
+                    <form id="restaurantForm" class="grid grid-cols-1 md:grid-cols-12 gap-3">
                         <div class="md:col-span-6">
-                            <input type="text" id="resName" required placeholder="Tên quán..." class="w-full px-4 py-3 rounded-xl bg-orange-50 border-transparent input-focus text-sm">
+                            <input type="text" id="resName" required placeholder="TÊN QUÁN..." class="w-full px-4 py-2.5 rounded-xl bg-pink-50/50 border-transparent input-focus text-sm uppercase">
                         </div>
                         <div class="md:col-span-6">
-                            <input type="text" id="resAddress" required placeholder="Địa chỉ..." class="w-full px-4 py-3 rounded-xl bg-orange-50 border-transparent input-focus text-sm">
+                            <input type="text" id="resAddress" required placeholder="Địa chỉ..." class="w-full px-4 py-2.5 rounded-xl bg-pink-50/50 border-transparent input-focus text-sm">
                         </div>
                         <div class="md:col-span-12">
-                            <input type="text" id="resDish" required placeholder="Những món nên thử..." class="w-full px-4 py-3 rounded-xl bg-orange-50 border-transparent input-focus text-sm">
+                            <input type="text" id="resDish" required placeholder="Món tâm đắc..." class="w-full px-4 py-2.5 rounded-xl bg-pink-50/50 border-transparent input-focus text-sm">
                         </div>
                         <div class="md:col-span-6">
-                            <input type="text" id="resTime" placeholder="Ghi chú (giờ mở, lưu ý...)" class="w-full px-4 py-3 rounded-xl bg-orange-50 border-transparent input-focus text-sm">
+                            <input type="text" id="resTime" placeholder="Ghi chú (mấy giờ mở, gần đâu...)" class="w-full px-4 py-2.5 rounded-xl bg-pink-50/50 border-transparent input-focus text-sm">
                         </div>
                         <div class="md:col-span-6">
-                            <select id="resStatus" class="w-full px-4 py-3 rounded-xl bg-orange-50 border-transparent input-focus text-sm appearance-none cursor-pointer">
+                            <select id="resStatus" class="w-full px-4 py-2.5 rounded-xl bg-pink-50/50 border-transparent input-focus text-sm cursor-pointer">
                                 <option value="wishlist">Đợi dắt vợ đi ăn 💌</option>
                                 <option value="visited_ok">Trải nghiệm OK ✨</option>
                                 <option value="visited_bad">Trải nghiệm không OK 🍋</option>
                             </select>
                         </div>
-                        <div class="md:col-span-12 flex justify-end">
-                            <button type="submit" class="btn-gradient px-8 py-3 rounded-xl font-bold uppercase text-[10px] tracking-widest shadow-md">
-                                Thêm vào menu
+                        <div class="md:col-span-12 flex justify-center">
+                            <button type="submit" class="btn-pink-gradient px-10 py-2.5 rounded-full font-bold uppercase text-[10px] tracking-widest shadow-md">
+                                Thêm vào sổ tay
                             </button>
                         </div>
                     </form>
@@ -162,53 +165,53 @@
             </details>
         </section>
 
-        <!-- Bộ lọc 3 Tab -->
+        <!-- Tabs & Tìm kiếm -->
         <div class="flex flex-col gap-4 mb-8">
-            <div class="flex flex-wrap bg-orange-100/50 p-1 rounded-2xl gap-1">
-                <button onclick="changeTab('wishlist')" id="tab-wishlist" class="flex-1 min-w-[100px] py-3 rounded-xl text-[10px] font-bold transition-all tab-active">
-                    DANH SÁCH CHỜ (<span id="count-wishlist">0</span>)
+            <div class="flex bg-white/60 p-1 rounded-full border border-pink-100">
+                <button onclick="changeTab('wishlist')" id="tab-wishlist" class="flex-1 py-2 rounded-full text-[9px] font-bold transition-all tab-active">
+                    CHỜ ĂN (<span id="count-wishlist">0</span>)
                 </button>
-                <button onclick="changeTab('visited_ok')" id="tab-visited_ok" class="flex-1 min-w-[100px] py-3 rounded-xl text-[10px] font-bold text-orange-400 transition-all">
-                    TRẢI NGHIỆM OK (<span id="count-visited_ok">0</span>)
+                <button onclick="changeTab('visited_ok')" id="tab-visited_ok" class="flex-1 py-2 rounded-full text-[9px] font-bold text-pink-300 transition-all">
+                    ĂN OK (<span id="count-visited_ok">0</span>)
                 </button>
-                <button onclick="changeTab('visited_bad')" id="tab-visited_bad" class="flex-1 min-w-[100px] py-3 rounded-xl text-[10px] font-bold text-orange-400 transition-all">
+                <button onclick="changeTab('visited_bad')" id="tab-visited_bad" class="flex-1 py-2 rounded-full text-[9px] font-bold text-pink-300 transition-all">
                     KHÔNG OK (<span id="count-visited_bad">0</span>)
                 </button>
             </div>
             
-            <div class="relative group">
-                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-orange-300"></i>
-                <input type="text" id="searchInput" placeholder="Tìm theo tên quán hoặc món ăn..." 
-                    class="w-full bg-white border border-orange-100 rounded-2xl px-10 py-3 text-sm focus:ring-2 focus:ring-orange-200 focus:outline-none shadow-sm">
+            <div class="relative">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-pink-200"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm quán ngon..." 
+                    class="w-full bg-white border border-pink-50 rounded-full px-10 py-2.5 text-sm focus:ring-2 focus:ring-pink-100 focus:outline-none shadow-sm">
             </div>
         </div>
 
         <!-- Danh sách -->
         <div id="restaurantList" class="card-grid"></div>
 
-        <div id="emptyState" class="hidden text-center py-20 bg-white/40 rounded-[30px] border-2 border-dashed border-orange-200">
-            <i class="fas fa-utensils text-orange-200 text-4xl mb-3"></i>
-            <p class="text-orange-300 uppercase tracking-widest text-[10px] font-bold">Chưa có dữ liệu nào</p>
+        <div id="emptyState" class="hidden text-center py-16 bg-white/40 rounded-[30px] border-2 border-dashed border-pink-100">
+            <i class="fas fa-heart text-pink-100 text-3xl mb-2"></i>
+            <p class="text-pink-200 uppercase tracking-widest text-[9px] font-bold">Mục này đang trống</p>
         </div>
     </main>
 
-    <!-- Modal Review -->
+    <!-- Modal ghi chú kỷ niệm -->
     <div id="noteModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-orange-950/30 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="bg-white rounded-[32px] p-8 shadow-2xl relative z-10 w-full max-w-sm border-4 border-orange-50 animate-pop">
-            <h3 id="modalTitle" class="text-xl font-bold mb-1 text-orange-700 font-['Dancing_Script'] text-center"></h3>
-            <p id="modalSubtitle" class="text-orange-300 text-[10px] uppercase tracking-widest mb-6 text-center"></p>
-            <textarea id="modalNoteInput" rows="4" class="w-full px-5 py-4 rounded-2xl bg-orange-50 border-transparent focus:bg-white input-focus text-sm text-orange-900" placeholder="Viết vài dòng cảm nhận của Vân nè..."></textarea>
-            <div class="flex gap-3 mt-6">
-                <button onclick="closeModal()" class="flex-1 py-3 text-orange-300 text-[10px] font-bold uppercase tracking-widest">Hủy</button>
-                <button id="saveModalBtn" class="flex-1 py-3 btn-gradient rounded-xl text-[10px] font-bold uppercase tracking-widest shadow-lg">Lưu lại</button>
+        <div class="absolute inset-0 bg-pink-900/10 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="bg-white rounded-[25px] p-6 shadow-2xl relative z-10 w-full max-w-sm border-2 border-pink-50">
+            <h3 id="modalTitle" class="text-xl font-bold mb-1 text-pink-500 font-['Dancing_Script'] text-center"></h3>
+            <p id="modalSubtitle" class="text-pink-200 text-[9px] uppercase tracking-widest mb-4 text-center"></p>
+            <textarea id="modalNoteInput" rows="3" class="w-full px-4 py-3 rounded-xl bg-pink-50 border-transparent focus:bg-white input-focus text-sm text-pink-900" placeholder="Vân thấy sao nè..."></textarea>
+            <div class="flex gap-2 mt-5">
+                <button onclick="closeModal()" class="flex-1 py-2 text-pink-300 text-[9px] font-bold uppercase tracking-widest">Hủy</button>
+                <button id="saveModalBtn" class="flex-1 py-2 btn-pink-gradient rounded-full text-[9px] font-bold uppercase tracking-widest shadow-lg">Lưu lại</button>
             </div>
         </div>
     </div>
 
-    <!-- Toast -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 btn-gradient px-6 py-3 rounded-full shadow-xl opacity-0 transition-all z-[100] pointer-events-none text-[11px] font-bold flex items-center gap-2 whitespace-nowrap">
-        <i class="fas fa-heart text-white"></i> <span id="toastMsg">Xong!</span>
+    <!-- Thông báo nhỏ -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 btn-pink-gradient px-6 py-2.5 rounded-full shadow-xl opacity-0 transition-all z-[100] pointer-events-none text-[10px] font-bold flex items-center gap-2 whitespace-nowrap">
+        <i class="fas fa-check-circle"></i> <span id="toastMsg">Thành công!</span>
     </div>
 
     <script>
@@ -216,67 +219,57 @@
         let editingId = null;
         let pendingStatus = null;
 
-        const initialData = [
-            { id: 1, name: "BÁNH BAO PHÔ MAI THỊT XIÊN NƯỚNG", address: "134 PHÙ ĐỔNG", time: "", dish: "Thịt xiên nướng, bánh bao phô mai", status: "wishlist", note: "" },
-            { id: 2, name: "Quán Tú Mơ (Ngô Quyền)", address: "Ngô Quyền", time: "", dish: "Cà tím Tú Mơ, Vịt lộn nấu bầu", status: "wishlist", note: "" },
-            { id: 3, name: "Lẩu bò tiềm Yersin", address: "Yersin", time: "Gần trường Bẻo", dish: "Lẩu bò tiềm, Gỏi bò tái chanh", status: "wishlist", note: "" },
-            { id: 4, name: "Bún đậu Phố cổ", address: "144 Phan Đình Phùng", time: "", dish: "Chả cá Lã Vọng, Bún nem cua bể, Ốc nhồi thịt, Lẩu cá tằm", status: "wishlist", note: "" },
-            { id: 5, name: "BÁNH XÈO MIỀN TÂY CÔ BA", address: "3/3 BÀ TRIỆU", time: "11H - 21H", dish: "Bánh xèo miền Tây", status: "wishlist", note: "" },
-            { id: 6, name: "Cá Tầm Tuyên", address: "Đà Lạt", time: "", dish: "Lẩu cá tầm, Cá tầm nướng", status: "wishlist", note: "" },
-            { id: 7, name: "PAMI COFFEE", address: "Hai Bà Trưng", time: "", dish: "Bánh flan", status: "wishlist", note: "" },
-            { id: 8, name: "BÒ TƠ NHÀ LỒNG", address: "Dã Chiến", time: "", dish: "Bò tơ, Cơm chiên", status: "wishlist", note: "" }
+        // DỮ LIỆU CŨ ĐÃ ĐƯỢC NẠP LẠI VÀ CHUYỂN THÀNH IN HOA
+        let defaultData = [
+            { id: 1, name: "BÁNH BAO PHÔ MAI THỊT XIÊN NƯỚNG", address: "134 PHÙ ĐỔNG", time: "Thường bán chiều tối", dish: "Thịt xiên nướng, bánh bao phô mai", status: "wishlist", note: "" },
+            { id: 2, name: "QUÁN TÚ MƠ", address: "Khu vực Ngô Quyền", time: "", dish: "Cà tím Tú Mơ, Vịt lộn nấu bầu", status: "wishlist", note: "" },
+            { id: 3, name: "LẨU BÒ TIỀM YERSIN", address: "Yersin (Gần trường Bẻo)", time: "", dish: "Lẩu bò tiềm, Gỏi bò tái chanh", status: "wishlist", note: "" },
+            { id: 4, name: "BÁNH MÌ ÔNG MINH", address: "4 PHÙ ĐỔNG", time: "Bán sáng/chiều", dish: "Bánh mì gà xé, Pate truyền thống", status: "visited_ok", note: "Vân khen ngon nhất luôn" },
+            { id: 5, name: "BÁNH MÌ NƯỚNG PHÙ ĐỔNG", address: "Gần ngã tư Phù Đổng", time: "", dish: "Bánh mì muối ớt", status: "visited_ok", note: "Ăn vặt cực hợp" },
+            { id: 6, name: "CHÈ HÉ", address: "Đường 3/2", time: "", dish: "Chè thập cẩm", status: "wishlist", note: "" },
+            { id: 7, name: "BÁNH TRÁNG TRỘN DÌ LINH", address: "Ngã 5 đại học", time: "", dish: "Bánh tráng cuốn sốt bơ", status: "wishlist", note: "" }
         ];
 
-        let restaurants = JSON.parse(localStorage.getItem('thuyVanFood_v8'));
+        let restaurants = JSON.parse(localStorage.getItem('thuyVanFood_v9'));
         if (!restaurants || restaurants.length === 0) {
-            restaurants = initialData;
-            localStorage.setItem('thuyVanFood_v8', JSON.stringify(restaurants));
+            restaurants = defaultData;
+            localStorage.setItem('thuyVanFood_v9', JSON.stringify(restaurants));
         }
 
         function saveData() {
-            localStorage.setItem('thuyVanFood_v8', JSON.stringify(restaurants));
+            localStorage.setItem('thuyVanFood_v9', JSON.stringify(restaurants));
             renderList(document.getElementById('searchInput').value);
             updateCounts();
         }
 
-        // TẢI FILE DỮ LIỆU (.JSON)
         function downloadBackup() {
             const dataStr = JSON.stringify(restaurants, null, 2);
             const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = `Sổ_Tay_Món_Ngon_ThuyVan_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
-
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
-            showToast('Đã tải file dữ liệu về máy! 💾');
+            const fileName = `FOOD_VAN_${new Date().getTime()}.json`;
+            const link = document.createElement('a');
+            link.setAttribute('href', dataUri);
+            link.setAttribute('download', fileName);
+            link.click();
+            showToast('Đã sao lưu file dữ liệu! 💾');
         }
 
-        // NẠP FILE DỮ LIỆU
         function importBackup(event) {
             const file = event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
                     const importedData = JSON.parse(e.target.result);
                     if (Array.isArray(importedData)) {
-                        if (confirm('Bạn có muốn thay thế dữ liệu hiện tại bằng dữ liệu từ file này không?')) {
+                        if (confirm('Nạp dữ liệu mới từ file?')) {
                             restaurants = importedData;
                             saveData();
-                            showToast('Khôi phục dữ liệu thành công! 🎉');
+                            showToast('Đã nạp xong dữ liệu! 🎉');
                         }
-                    } else {
-                        showToast('File không đúng định dạng sổ tay! ❌');
                     }
-                } catch (err) {
-                    showToast('Lỗi khi đọc file! ❌');
-                }
+                } catch (err) { showToast('File không hợp lệ! ❌'); }
             };
             reader.readAsText(file);
-            // Reset input file để có thể chọn lại cùng 1 file nếu cần
             event.target.value = '';
         }
 
@@ -291,53 +284,33 @@
             ['wishlist', 'visited_ok', 'visited_bad'].forEach(t => {
                 const el = document.getElementById(`tab-${t}`);
                 if (t === tab) {
-                    el.className = 'flex-1 min-w-[100px] py-3 rounded-xl text-[10px] font-bold transition-all tab-active';
+                    el.className = 'flex-1 py-2 rounded-full text-[9px] font-bold transition-all tab-active';
                 } else {
-                    el.className = 'flex-1 min-w-[100px] py-3 rounded-xl text-[10px] font-bold text-orange-400 transition-all';
+                    el.className = 'flex-1 py-2 rounded-full text-[9px] font-bold text-pink-300 transition-all';
                 }
             });
             renderList();
         }
 
         function exportToZalo() {
-            let text = `🍱 SỔ TAY MÓN NGON CHO THÙY VÂN 🍱\n`;
-            text += `--------------------------------\n\n`;
-
-            const wishlist = restaurants.filter(r => r.status === 'wishlist');
-            if(wishlist.length > 0) {
-                text += `📌 DANH SÁCH CHỜ ĂN (${wishlist.length}):\n`;
-                wishlist.forEach((r, i) => {
-                    text += `${i+1}. ${r.name}\n   📍 Đ/c: ${r.address}\n   🍜 Món: ${r.dish}${r.time ? `\n   ⏰ Lưu ý: ${r.time}` : ''}\n\n`;
-                });
-            }
-
-            const ok = restaurants.filter(r => r.status === 'visited_ok');
-            if(ok.length > 0) {
-                text += `✨ TRẢI NGHIỆM OK (${ok.length}):\n`;
-                ok.forEach((r, i) => {
-                    text += `${i+1}. ${r.name}\n   📍 Đ/c: ${r.address}\n   💬 Vân bảo: ${r.note || 'Rất ngon ạ!'}\n\n`;
-                });
-            }
-
-            const bad = restaurants.filter(r => r.status === 'visited_bad');
-            if(bad.length > 0) {
-                text += `🍋 TRẢI NGHIỆM KHÔNG OK (${bad.length}):\n`;
-                bad.forEach((r, i) => {
-                    text += `${i+1}. ${r.name}\n   📍 Đ/c: ${r.address}\n   💬 Lý do: ${r.note || 'Lạ vị quá nè'}\n\n`;
-                });
-            }
-
-            text += `--------------------------------\n`;
-            text += `Cập nhật lúc: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
-
+            let text = `🌸 DANH SÁCH MÓN NGON CỦA VÂN 🌸\n\n`;
+            const groups = { 'wishlist': '📌 CHỜ ĂN', 'visited_ok': '✨ NGON QUÁ TRỜI', 'visited_bad': '🍋 KHÔNG HỢP VỊ' };
+            Object.keys(groups).forEach(key => {
+                const list = restaurants.filter(r => r.status === key);
+                if(list.length > 0) {
+                    text += `${groups[key]}:\n`;
+                    list.forEach((r, i) => {
+                        text += `${i+1}. ${r.name}\n   - Đ/c: ${r.address}\n   - Món: ${r.dish}${r.note ? `\n   - Note: ${r.note}` : ''}\n\n`;
+                    });
+                }
+            });
             const el = document.createElement('textarea');
             el.value = text;
             document.body.appendChild(el);
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-
-            showToast('Đã copy dữ liệu văn bản! Dán vào Zalo ngay nhé 🚀');
+            showToast('Đã copy văn bản gửi Zalo! 🚀');
         }
 
         function openReviewModal(id, targetStatus = null) {
@@ -347,14 +320,14 @@
             document.getElementById('modalNoteInput').value = res.note || "";
             
             if (targetStatus === 'visited_ok') {
-                document.getElementById('modalTitle').innerText = 'Trải nghiệm tuyệt vời! ✨';
-                document.getElementById('modalSubtitle').innerText = 'Điều gì làm Vân hài lòng nhất?';
+                document.getElementById('modalTitle').innerText = 'Quán này ngon đúng không? ✨';
+                document.getElementById('modalSubtitle').innerText = 'Lưu lại món Vân thích nhất nào';
             } else if (targetStatus === 'visited_bad') {
-                document.getElementById('modalTitle').innerText = 'Trải nghiệm chưa tốt 🍋';
-                document.getElementById('modalSubtitle').innerText = 'Vân thấy quán cần cải thiện gì nè?';
+                document.getElementById('modalTitle').innerText = 'Tiếc quá nhỉ 🍋';
+                document.getElementById('modalSubtitle').innerText = 'Lần sau mình né quán này nha';
             } else {
-                document.getElementById('modalTitle').innerText = 'Cảm nhận của Vân';
-                document.getElementById('modalSubtitle').innerText = 'Chỉnh sửa lại kỷ niệm';
+                document.getElementById('modalTitle').innerText = 'Chỉnh sửa ghi chú';
+                document.getElementById('modalSubtitle').innerText = 'Cập nhật lại kỷ niệm';
             }
             
             document.getElementById('noteModal').classList.remove('hidden');
@@ -371,34 +344,16 @@
             const index = restaurants.findIndex(r => r.id === editingId);
             const noteText = document.getElementById('modalNoteInput').value;
             restaurants[index].note = noteText;
-            
-            if (pendingStatus) {
-                restaurants[index].status = pendingStatus;
-                let msg = pendingStatus === 'visited_ok' ? "Món ngon đã vào sổ tay! ✨" : "Đã ghi chú lại để rút kinh nghiệm 🍋";
-                showToast(msg);
-            } else {
-                showToast('Đã cập nhật ghi chú!');
-            }
+            if (pendingStatus) restaurants[index].status = pendingStatus;
             saveData();
             closeModal();
-        }
-
-        function setStatus(id, status) {
-            openReviewModal(id, status);
-        }
-
-        function moveToWishlist(id) {
-            const index = restaurants.findIndex(r => r.id === id);
-            restaurants[index].status = 'wishlist';
-            saveData();
-            showToast('Đã chuyển lại về danh sách chờ!');
+            showToast('Đã lưu kỷ niệm! ❤️');
         }
 
         function deleteItem(id) {
             if(confirm('Xóa quán này khỏi sổ tay nhé?')) {
                 restaurants = restaurants.filter(r => r.id !== id);
                 saveData();
-                showToast('Đã xóa!');
             }
         }
 
@@ -412,54 +367,49 @@
         function renderList(query = '') {
             const container = document.getElementById('restaurantList');
             container.innerHTML = '';
-            
             const filtered = restaurants.filter(r => 
                 r.status === currentTab && 
                 (r.name.toLowerCase().includes(query.toLowerCase()) || r.dish.toLowerCase().includes(query.toLowerCase()))
             );
-
             document.getElementById('emptyState').classList.toggle('hidden', filtered.length > 0);
 
-            filtered.sort((a, b) => b.id - a.id).forEach(res => {
+            filtered.forEach(res => {
                 const card = document.createElement('div');
-                card.className = 'journal-card p-5 flex flex-col md:flex-row gap-4 items-start md:items-center relative';
-                
+                card.className = 'journal-card p-4 md:p-5 flex flex-col md:flex-row gap-4 items-start md:items-center';
                 card.innerHTML = `
                     <div class="flex-1 w-full">
                         <div class="flex justify-between items-start mb-1">
-                            <h3 class="text-base font-bold text-orange-900 leading-tight">${res.name}</h3>
-                            <span class="text-[9px] font-bold text-orange-300 uppercase tracking-tighter whitespace-nowrap ml-2">${res.time || ''}</span>
+                            <h3 class="text-sm font-bold text-pink-700 leading-tight uppercase">${res.name}</h3>
+                            <span class="text-[8px] font-bold text-pink-200 uppercase whitespace-nowrap ml-2">${res.time || ''}</span>
                         </div>
-                        <div class="text-[10px] text-orange-400 font-semibold mb-3">
-                            <i class="fas fa-map-marker-alt mr-1"></i> ${res.address}
+                        <div class="text-[9px] text-pink-300 font-semibold mb-2">
+                            <i class="fas fa-map-pin mr-1"></i> ${res.address}
                         </div>
-                        <div class="bg-orange-50/70 px-3 py-2 rounded-xl">
-                            <span class="text-[9px] uppercase font-bold text-orange-300 block mb-1">Những món nên thử</span>
-                            <span class="text-xs text-orange-800 font-medium leading-relaxed">${res.dish}</span>
+                        <div class="bg-pink-50/40 p-2 rounded-xl border border-pink-50/50">
+                            <span class="text-[11px] text-pink-800 font-medium">${res.dish}</span>
                         </div>
                         ${res.note ? `
-                            <p onclick="openReviewModal(${res.id})" class="text-[10px] text-slate-400 italic mt-2 line-clamp-2 cursor-pointer border-l-2 border-orange-100 pl-2">💬 "${res.note}"</p>
+                            <p onclick="openReviewModal(${res.id})" class="text-[10px] text-pink-300 italic mt-2 line-clamp-1 cursor-pointer">💬 "${res.note}"</p>
                         ` : ''}
                     </div>
 
-                    <div class="flex md:flex-col gap-2 w-full md:w-auto border-t md:border-t-0 md:border-l border-orange-50 pt-3 md:pt-0 md:pl-4">
+                    <div class="flex md:flex-col gap-2 w-full md:w-auto border-t md:border-t-0 md:border-l border-pink-50 pt-3 md:pt-0 md:pl-4">
                         ${res.status === 'wishlist' ? `
-                            <button onclick="setStatus(${res.id}, 'visited_ok')" class="flex-1 text-[9px] font-bold uppercase tracking-widest text-white bg-emerald-400 py-2.5 md:px-4 rounded-lg hover:bg-emerald-500 transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-smile"></i> Ăn OK
-                            </button>
-                            <button onclick="setStatus(${res.id}, 'visited_bad')" class="flex-1 text-[9px] font-bold uppercase tracking-widest text-white bg-rose-400 py-2.5 md:px-4 rounded-lg hover:bg-rose-500 transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-frown"></i> Không OK
-                            </button>
+                            <div class="flex gap-2 w-full">
+                                <button onclick="openReviewModal(${res.id}, 'visited_ok')" class="btn-action-mobile flex-1 text-white bg-emerald-400 py-2 rounded-lg hover:bg-emerald-500 transition-all flex items-center justify-center shadow-sm">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button onclick="openReviewModal(${res.id}, 'visited_bad')" class="btn-action-mobile flex-1 text-white bg-rose-400 py-2 rounded-lg hover:bg-rose-500 transition-all flex items-center justify-center shadow-sm">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
                         ` : `
-                            <button onclick="moveToWishlist(${res.id})" class="flex-1 text-[9px] font-bold uppercase tracking-widest text-orange-600 bg-orange-100/50 py-2 md:px-4 rounded-lg hover:bg-orange-100 transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-undo"></i> Chờ ăn lại
-                            </button>
-                            <button onclick="openReviewModal(${res.id})" class="flex-1 text-[9px] font-bold uppercase tracking-widest text-blue-500 bg-blue-50 py-2 md:px-4 rounded-lg hover:bg-blue-100 transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-edit"></i> Sửa ghi chú
+                            <button onclick="restaurants[restaurants.findIndex(r=>r.id==${res.id})].status='wishlist'; saveData();" class="btn-action-mobile flex-1 text-[10px] font-bold uppercase text-pink-400 bg-pink-50 py-2 rounded-lg hover:bg-pink-100 transition-all flex items-center justify-center gap-1.5">
+                                <i class="fas fa-undo"></i> Ăn lại
                             </button>
                         `}
-                        <button onclick="deleteItem(${res.id})" class="p-2 text-orange-200 hover:text-red-400 transition-colors text-center">
-                            <i class="fas fa-trash-alt text-xs"></i>
+                        <button onclick="deleteItem(${res.id})" class="p-2 text-pink-100 hover:text-red-300 transition-colors text-center hidden md:block">
+                            <i class="fas fa-trash text-[10px]"></i>
                         </button>
                     </div>
                 `;
@@ -471,7 +421,7 @@
             e.preventDefault();
             const newItem = {
                 id: Date.now(),
-                name: document.getElementById('resName').value,
+                name: document.getElementById('resName').value.toUpperCase(), 
                 address: document.getElementById('resAddress').value,
                 time: document.getElementById('resTime').value,
                 dish: document.getElementById('resDish').value,
@@ -481,7 +431,7 @@
             restaurants.unshift(newItem);
             saveData();
             this.reset();
-            showToast('Đã thêm món mới vào thực đơn!');
+            showToast('Đã thêm quán mới cho Vân! ❤️');
         };
 
         document.getElementById('searchInput').oninput = (e) => renderList(e.target.value);
