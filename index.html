@@ -220,16 +220,35 @@
         </div>
     </main>
 
-    <!-- Note Modal -->
+    <!-- Edit/Note Modal -->
     <div id="noteModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="bg-gray-900 border border-pink-600/50 rounded-2xl p-8 shadow-2xl relative z-10 w-full max-w-sm">
-            <h3 id="modalTitle" class="text-lg font-bold mb-1 text-pink-500 text-center tracking-tight"></h3>
-            <p id="modalSubtitle" class="text-gray-500 text-[10px] uppercase tracking-widest mb-6 text-center font-bold"></p>
-            <textarea id="modalNoteInput" rows="4" class="w-full px-5 py-4 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 input-focus text-sm text-white font-medium outline-none" placeholder="Cảm nghĩ của Vân nè..."></textarea>
+        <div class="bg-gray-900 border border-pink-600/50 rounded-2xl p-8 shadow-2xl relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h3 id="modalTitle" class="text-lg font-bold mb-1 text-pink-500 text-center tracking-tight">Cập nhật thông tin</h3>
+            <p id="modalSubtitle" class="text-gray-500 text-[10px] uppercase tracking-widest mb-6 text-center font-bold">Chỉnh sửa nội dung cho công chúa</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Tên quán</label>
+                    <input type="text" id="editModalName" class="w-full px-5 py-3 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 text-sm text-white font-medium outline-none">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Địa chỉ</label>
+                    <input type="text" id="editModalAddress" class="w-full px-5 py-3 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 text-sm text-white font-medium outline-none">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Món ngon nên thử</label>
+                    <input type="text" id="editModalDish" class="w-full px-5 py-3 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 text-sm text-white font-medium outline-none">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Ghi chú / Kỷ niệm</label>
+                    <textarea id="modalNoteInput" rows="3" class="w-full px-5 py-3 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 text-sm text-white font-medium outline-none" placeholder="Cảm nghĩ của Vân nè..."></textarea>
+                </div>
+            </div>
+
             <div class="flex gap-3 mt-8">
                 <button onclick="closeModal()" class="flex-1 py-3 text-gray-500 text-xs font-bold hover:text-white transition-all">Hủy</button>
-                <button id="saveModalBtn" class="flex-1 py-3 btn-bp-gradient rounded-lg text-xs font-bold shadow-lg">Lưu kỷ niệm</button>
+                <button id="saveModalBtn" class="flex-1 py-3 btn-bp-gradient rounded-lg text-xs font-bold shadow-lg">Lưu thay đổi</button>
             </div>
         </div>
     </div>
@@ -284,23 +303,28 @@
             renderList();
         }
 
-        function openReviewModal(id, targetStatus = null) {
+        function openEditModal(id, targetStatus = null) {
             editingId = id;
             pendingStatus = targetStatus;
             const res = restaurants.find(r => r.id === id);
+            
+            // Điền thông tin vào form
+            document.getElementById('editModalName').value = res.name;
+            document.getElementById('editModalAddress').value = res.address;
+            document.getElementById('editModalDish').value = res.dish;
             document.getElementById('modalNoteInput').value = res.note || "";
             
             const titles = { 
                 'visited_ok': ['Tuyệt vời quá! ✨', 'Ghi lại món Vân yêu thích nhất'], 
                 'visited_bad': ['Hơi tiếc một chút 🖤', 'Lần sau mình né quán này ra nhé'], 
-                'default': ['Cập nhật thông tin', 'Thêm ghi chú cho công chúa'] 
+                'default': ['Chỉnh sửa thông tin', 'Cập nhật lại cho chính xác'] 
             };
+            
             const set = titles[targetStatus] || titles['default'];
             document.getElementById('modalTitle').innerText = set[0];
             document.getElementById('modalSubtitle').innerText = set[1];
             
             document.getElementById('noteModal').classList.remove('hidden');
-            setTimeout(() => document.getElementById('modalNoteInput').focus(), 100);
         }
 
         function closeModal() {
@@ -311,11 +335,19 @@
 
         document.getElementById('saveModalBtn').onclick = () => {
             const index = restaurants.findIndex(r => r.id === editingId);
-            restaurants[index].note = document.getElementById('modalNoteInput').value;
+            if (index === -1) return;
+
+            // Cập nhật tất cả các trường
+            restaurants[index].name = toTitleCase(document.getElementById('editModalName').value.trim());
+            restaurants[index].address = document.getElementById('editModalAddress').value.trim();
+            restaurants[index].dish = toTitleCase(document.getElementById('editModalDish').value.trim());
+            restaurants[index].note = document.getElementById('modalNoteInput').value.trim();
+            
             if (pendingStatus) restaurants[index].status = pendingStatus;
+            
             saveData();
             closeModal();
-            showToast('Đã cập nhật kỷ niệm! 🎀');
+            showToast('Đã lưu thay đổi! 🎀');
         }
 
         function deleteItem(id) {
@@ -357,15 +389,15 @@
                         <div class="bg-black/40 p-4 rounded-xl border border-pink-900/20 shadow-inner">
                             <span class="text-[13px] text-pink-100 font-medium leading-relaxed">${res.dish}</span>
                         </div>
-                        ${res.note ? `<p onclick="openReviewModal(${res.id})" class="text-[12px] text-pink-500 font-medium italic mt-4 line-clamp-2 cursor-pointer bg-pink-500/5 py-2 px-4 rounded-lg border border-pink-500/10 inline-block">✨ "${res.note}"</p>` : ''}
+                        ${res.note ? `<p onclick="openEditModal(${res.id})" class="text-[12px] text-pink-500 font-medium italic mt-4 line-clamp-2 cursor-pointer bg-pink-500/5 py-2 px-4 rounded-lg border border-pink-500/10 inline-block">✨ "${res.note}"</p>` : ''}
                         
                         <div class="flex items-center justify-between mt-6">
                             <div class="flex gap-3">
                                 ${res.status === 'wishlist' ? `
-                                    <button onclick="openReviewModal(${res.id}, 'visited_ok')" class="square-btn bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 hover:bg-emerald-500 hover:text-white" title="Thích cực ✨">
+                                    <button onclick="openEditModal(${res.id}, 'visited_ok')" class="square-btn bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 hover:bg-emerald-500 hover:text-white" title="Thích cực ✨">
                                         <i class="fas fa-check"></i>
                                     </button>
-                                    <button onclick="openReviewModal(${res.id}, 'visited_bad')" class="square-btn bg-rose-500/20 text-rose-500 border border-rose-500/30 hover:bg-rose-500 hover:text-white" title="Không hợp 🖤">
+                                    <button onclick="openEditModal(${res.id}, 'visited_bad')" class="square-btn bg-rose-500/20 text-rose-500 border border-rose-500/30 hover:bg-rose-500 hover:text-white" title="Không hợp 🖤">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 ` : `
@@ -376,7 +408,7 @@
                             </div>
                             
                             <div class="flex gap-2">
-                                <button onclick="openReviewModal(${res.id})" class="p-2 text-gray-600 hover:text-white transition-colors" title="Sửa"><i class="fas fa-edit text-[14px]"></i></button>
+                                <button onclick="openEditModal(${res.id})" class="p-2 text-gray-600 hover:text-white transition-colors" title="Sửa thông tin"><i class="fas fa-edit text-[14px]"></i></button>
                                 <button onclick="deleteItem(${res.id})" class="p-2 text-gray-600 hover:text-rose-500 transition-colors" title="Xóa"><i class="fas fa-trash text-[14px]"></i></button>
                             </div>
                         </div>
