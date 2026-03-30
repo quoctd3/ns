@@ -3,184 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đồ ăn ngon cho công chúa</title>
+    <title>Đồ ăn ngon cho công chúa - Born Pink Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #ffafbd;
-            --soft-rose: #ffc3a0;
-            --deep-pink: #ff85a1;
-            --light-pink: #fffafa;
-            --text-color: #5d4037;
+            --bp-pink: #f32c89;
+            --bp-dark-pink: #a11d5a;
+            --bp-black: #050505;
+            --bp-gray: #1a1a1a;
+            --text-light: #ffffff;
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--light-pink);
-            color: var(--text-color);
-            background-image: linear-gradient(rgba(255, 250, 250, 0.92), rgba(255, 250, 250, 0.92)), 
-                              url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80');
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--bp-black);
+            color: var(--text-light);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(243, 44, 137, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(243, 44, 137, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
-            background-size: cover;
+        }
+
+        .bp-font {
+            font-family: 'Syncopate', sans-serif;
         }
 
         .journal-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(255, 133, 161, 0.08);
-            border: 1px solid rgba(255, 228, 233, 0.5);
-            transition: all 0.3s ease;
-            overflow: hidden;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(243, 44, 137, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
         .journal-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(255, 133, 161, 0.15);
-            background: rgba(255, 255, 255, 1);
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--bp-pink);
+            box-shadow: 0 0 20px rgba(243, 44, 137, 0.2);
+            background: rgba(35, 35, 35, 0.8);
         }
 
-        .input-focus:focus {
-            border-color: var(--deep-pink);
-            ring: 2px solid var(--deep-pink);
-            outline: none;
-        }
-
-        .btn-pink-gradient {
-            background: linear-gradient(135deg, #ff85a1, #ffafbd);
+        .btn-bp-gradient {
+            background: linear-gradient(90deg, var(--bp-pink), #ff64b4);
             color: white;
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-bp-gradient:hover {
+            box-shadow: 0 0 15px var(--bp-pink);
+            transform: translateY(-2px);
         }
 
         .tab-active {
             color: white;
-            font-weight: 700;
-            background: var(--deep-pink);
-            box-shadow: 0 4px 12px rgba(255, 133, 161, 0.25);
+            background: var(--bp-pink);
+            box-shadow: 0 0 15px rgba(243, 44, 137, 0.4);
         }
 
-        @keyframes heartBeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.15); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.15); }
-            70% { transform: scale(1); }
+        .input-bp {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(243, 44, 137, 0.3);
+            color: white;
+            transition: all 0.3s;
         }
 
-        .heart-icon {
-            display: inline-block;
-            animation: heartBeat 1.8s infinite;
-            color: #ff4d6d;
+        .input-bp:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--bp-pink);
+            outline: none;
+            box-shadow: 0 0 8px rgba(243, 44, 137, 0.3);
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 5px var(--bp-pink), 0 0 10px var(--bp-pink); }
+            50% { text-shadow: 0 0 10px var(--bp-pink), 0 0 20px var(--bp-pink); }
+        }
+
+        .neon-text {
+            animation: neonPulse 2s infinite;
         }
 
         .shyn-logo {
-            font-size: 0.875rem; 
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            background: linear-gradient(to right, #ff4d6d, #ff85a1);
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            letter-spacing: 4px;
+            background: linear-gradient(to right, #ffffff, var(--bp-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
         }
 
-        /* Nút icon vuông nhỏ */
         .square-btn {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            transition: all 0.2s;
-            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
 
         .square-btn:active {
             transform: scale(0.9);
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
-
-        @media (min-width: 1024px) {
-            .card-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        details summary::-webkit-details-marker {
+            display: none;
         }
     </style>
 </head>
 <body class="min-h-screen pb-24">
 
-    <header class="pt-12 pb-8 px-6 text-center">
+    <header class="pt-16 pb-12 px-6 text-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <h1 class="text-xl md:text-2xl font-bold text-pink-600 mb-1 tracking-widest uppercase">
-                Đồ ăn ngon cho công chúa
+            <h1 class="bp-font text-2xl md:text-4xl font-bold mb-6 tracking-tighter neon-text text-white uppercase">
+                Đồ ngon <span class="text-[#f32c89]">cho vợ</span>
             </h1>
             
-            <div class="flex items-center gap-2">
-                <span class="shyn-logo">NhokShyn</span>
-                <i class="fas fa-heart text-[10px] heart-icon"></i>
-            </div>
-
-            <div class="flex items-center gap-3 mt-5 opacity-40">
-                <span class="h-[1px] w-12 bg-pink-400"></span>
-                <i class="fas fa-utensils text-[9px] text-pink-500"></i>
-                <span class="h-[1px] w-12 bg-pink-400"></span>
+            <div class="flex items-center gap-3">
+                <span class="h-[1px] w-8 bg-pink-600"></span>
+                <span class="shyn-logo text-xs">NHOKSHYN</span>
+                <span class="h-[1px] w-8 bg-pink-600"></span>
             </div>
         </div>
     </header>
 
     <main class="max-w-5xl mx-auto px-4">
         
-        <div class="flex flex-wrap gap-2 mb-10 justify-center">
-             <button onclick="exportToZalo()" class="bg-[#0084FF] hover:bg-blue-600 text-white px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2">
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-3 mb-12 justify-center">
+             <button onclick="exportToZalo()" class="bg-[#0084FF] hover:bg-blue-600 text-white px-6 py-2 rounded-lg text-xs font-semibold shadow-lg transition-all flex items-center gap-2">
                 <i class="fas fa-paper-plane"></i> Gửi Zalo
             </button>
-            <button onclick="downloadBackup()" class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2">
-                <i class="fas fa-cloud-download-alt"></i> Lưu File
+            <button onclick="downloadBackup()" class="bg-[#1a1a1a] border border-pink-600 text-pink-500 hover:bg-pink-600 hover:text-white px-6 py-2 rounded-lg text-xs font-semibold shadow-lg transition-all flex items-center gap-2">
+                <i class="fas fa-download"></i> Lưu File
             </button>
-            <label class="bg-rose-300 hover:bg-rose-400 text-white px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-md transition-all flex items-center gap-2 cursor-pointer">
-                <i class="fas fa-cloud-upload-alt"></i> Nạp File
+            <label class="bg-[#1a1a1a] border border-gray-600 text-gray-400 hover:border-white hover:text-white px-6 py-2 rounded-lg text-xs font-semibold shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+                <i class="fas fa-upload"></i> Nạp File
                 <input type="file" id="importFile" class="hidden" accept=".json" onchange="importBackup(event)">
             </label>
         </div>
 
-        <section class="mb-10">
-            <details class="bg-white/80 backdrop-blur rounded-[24px] shadow-sm border border-pink-100 overflow-hidden group">
-                <summary class="list-none p-4 cursor-pointer flex justify-between items-center text-pink-500 font-bold uppercase text-[10px] tracking-[0.15em]">
-                    <span><i class="fas fa-plus-circle mr-2"></i> Thêm quán mới</span>
+        <!-- New Item Form -->
+        <section class="mb-12">
+            <details class="bg-gray-900/50 backdrop-blur rounded-2xl border border-pink-900/30 overflow-hidden group">
+                <summary class="list-none p-5 cursor-pointer flex justify-between items-center text-pink-500 font-bold text-sm tracking-wide">
+                    <span><i class="fas fa-plus mr-3 text-xs"></i> Thêm quán mới</span>
                     <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
                 </summary>
-                <div class="p-6 pt-2 border-t border-pink-50">
-                    <form id="restaurantForm" class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="p-8 pt-2 border-t border-pink-900/20">
+                    <form id="restaurantForm" class="grid grid-cols-1 md:grid-cols-12 gap-5">
                         <div class="md:col-span-6">
-                            <input type="text" id="resName" required placeholder="Tên Quán..." class="w-full px-4 py-3 rounded-xl bg-pink-50/30 border border-transparent input-focus text-sm font-medium">
+                            <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Tên quán</label>
+                            <input type="text" id="resName" required placeholder="Ví dụ: Bánh mì muối ớt..." class="w-full px-5 py-4 rounded-xl input-bp text-sm font-medium">
                         </div>
                         <div class="md:col-span-6">
-                            <input type="text" id="resAddress" required placeholder="Địa chỉ..." class="w-full px-4 py-3 rounded-xl bg-pink-50/30 border border-transparent input-focus text-sm font-medium">
+                            <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Địa chỉ</label>
+                            <input type="text" id="resAddress" required placeholder="Nhập địa chỉ hoặc khu vực..." class="w-full px-5 py-4 rounded-xl input-bp text-sm font-medium">
                         </div>
                         <div class="md:col-span-12">
-                            <input type="text" id="resDish" required placeholder="Những món nên ăn (phân cách bởi dấu phẩy)..." class="w-full px-4 py-3 rounded-xl bg-pink-50/30 border border-transparent input-focus text-sm font-medium">
+                            <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Món ngon nên thử</label>
+                            <input type="text" id="resDish" required placeholder="Các món ngăn cách bằng dấu phẩy..." class="w-full px-5 py-4 rounded-xl input-bp text-sm font-medium">
                         </div>
                         <div class="md:col-span-6">
-                            <input type="text" id="resTime" placeholder="Ghi chú thêm (giờ mở, vị trí...)" class="w-full px-4 py-3 rounded-xl bg-pink-50/30 border border-transparent input-focus text-sm font-medium">
+                            <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Ghi chú thêm</label>
+                            <input type="text" id="resTime" placeholder="Thời gian mở cửa hoặc lưu ý..." class="w-full px-5 py-4 rounded-xl input-bp text-sm font-medium">
                         </div>
                         <div class="md:col-span-6">
-                            <select id="resStatus" class="w-full px-4 py-3 rounded-xl bg-pink-50/30 border border-transparent input-focus text-sm cursor-pointer font-bold text-pink-600">
-                                <option value="wishlist">Đợi dắt vợ đi ăn 💌</option>
-                                <option value="visited_ok">Trải nghiệm OK ✨</option>
-                                <option value="visited_bad">Trải nghiệm không OK 🍋</option>
+                            <label class="block text-[10px] text-gray-500 font-bold mb-1 ml-1 uppercase tracking-widest">Trạng thái</label>
+                            <select id="resStatus" class="w-full px-5 py-4 rounded-xl input-bp text-sm cursor-pointer font-bold text-pink-500">
+                                <option value="wishlist">Đợi dắt vợ đi ăn 🎀</option>
+                                <option value="visited_ok">Trải nghiệm OK 🔥</option>
+                                <option value="visited_bad">Trải nghiệm không OK 🖤</option>
                             </select>
                         </div>
-                        <div class="md:col-span-12 flex justify-center mt-2">
-                            <button type="submit" class="btn-pink-gradient px-12 py-3 rounded-full font-bold uppercase text-[10px] tracking-widest shadow-lg">
-                                Thêm vào sổ tay
+                        <div class="md:col-span-12 flex justify-center mt-4">
+                            <button type="submit" class="btn-bp-gradient px-16 py-4 rounded-xl font-bold text-sm shadow-xl">
+                                Lưu vào danh sách
                             </button>
                         </div>
                     </form>
@@ -188,49 +191,52 @@
             </details>
         </section>
 
-        <div class="flex flex-col gap-5 mb-10">
-            <div class="flex bg-white/50 backdrop-blur-md p-1.5 rounded-full border border-pink-100 shadow-sm">
-                <button onclick="changeTab('wishlist')" id="tab-wishlist" class="flex-1 py-2.5 rounded-full text-[10px] font-bold transition-all tab-active">
-                    CHỜ ĂN (<span id="count-wishlist">0</span>)
+        <!-- Tabs & Search -->
+        <div class="flex flex-col gap-6 mb-12">
+            <div class="flex bg-gray-900/80 p-1.5 rounded-xl border border-pink-900/30">
+                <button onclick="changeTab('wishlist')" id="tab-wishlist" class="flex-1 py-3 rounded-lg text-xs font-bold transition-all tab-active">
+                    Danh sách chờ (<span id="count-wishlist">0</span>)
                 </button>
-                <button onclick="changeTab('visited_ok')" id="tab-visited_ok" class="flex-1 py-2.5 rounded-full text-[10px] font-bold text-pink-300 transition-all">
-                    ĂN OK (<span id="count-visited_ok">0</span>)
+                <button onclick="changeTab('visited_ok')" id="tab-visited_ok" class="flex-1 py-3 rounded-lg text-xs font-bold text-gray-500 transition-all">
+                    Yêu thích (<span id="count-visited_ok">0</span>)
                 </button>
-                <button onclick="changeTab('visited_bad')" id="tab-visited_bad" class="flex-1 py-2.5 rounded-full text-[10px] font-bold text-pink-300 transition-all">
-                    KHÔNG OK (<span id="count-visited_bad">0</span>)
+                <button onclick="changeTab('visited_bad')" id="tab-visited_bad" class="flex-1 py-3 rounded-lg text-xs font-bold text-gray-500 transition-all">
+                    Bỏ qua (<span id="count-visited_bad">0</span>)
                 </button>
             </div>
             
             <div class="relative">
-                <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-pink-300"></i>
-                <input type="text" id="searchInput" placeholder="Tìm tên quán hoặc món ngon..." 
-                    class="w-full bg-white/90 border border-pink-100 rounded-full px-12 py-3 text-sm focus:ring-2 focus:ring-pink-200 focus:outline-none shadow-sm font-medium">
+                <i class="fas fa-search absolute left-6 top-1/2 -translate-y-1/2 text-pink-500"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm món ngon cho công chúa..." 
+                    class="w-full bg-gray-900/60 border border-pink-900/20 rounded-xl px-14 py-4 text-sm focus:border-pink-500 focus:outline-none transition-all font-medium text-white shadow-inner">
             </div>
         </div>
 
-        <div id="restaurantList" class="card-grid"></div>
+        <div id="restaurantList" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
 
-        <div id="emptyState" class="hidden text-center py-20 bg-white/50 backdrop-blur rounded-[40px] border-2 border-dashed border-pink-200/50">
-            <i class="fas fa-cookie-bite text-pink-200 text-4xl mb-3 opacity-50"></i>
-            <p class="text-pink-300 uppercase tracking-[0.2em] text-[10px] font-bold">Mục này chưa có quán nào nè</p>
+        <div id="emptyState" class="hidden text-center py-24 bg-gray-900/30 rounded-3xl border-2 border-dashed border-pink-900/20">
+            <i class="fas fa-utensils text-pink-900 text-5xl mb-4 opacity-20"></i>
+            <p class="text-gray-500 text-sm font-medium">Chưa có quán nào trong danh sách này</p>
         </div>
     </main>
 
+    <!-- Note Modal -->
     <div id="noteModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-pink-900/10 backdrop-blur-md" onclick="closeModal()"></div>
-        <div class="bg-white rounded-[32px] p-8 shadow-2xl relative z-10 w-full max-w-sm border border-pink-50">
-            <h3 id="modalTitle" class="text-lg font-bold mb-1 text-pink-600 text-center uppercase tracking-wider"></h3>
-            <p id="modalSubtitle" class="text-pink-300 text-[10px] uppercase tracking-widest mb-6 text-center font-bold"></p>
-            <textarea id="modalNoteInput" rows="4" class="w-full px-5 py-4 rounded-2xl bg-pink-50/50 border-transparent focus:bg-white input-focus text-sm text-pink-900 font-medium leading-relaxed" placeholder="Vân thấy sao về quán này nè..."></textarea>
-            <div class="flex gap-3 mt-6">
-                <button onclick="closeModal()" class="flex-1 py-3 text-pink-300 text-[10px] font-bold uppercase tracking-widest hover:text-pink-500">Hủy</button>
-                <button id="saveModalBtn" class="flex-1 py-3 btn-pink-gradient rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">Lưu kỷ niệm</button>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="bg-gray-900 border border-pink-600/50 rounded-2xl p-8 shadow-2xl relative z-10 w-full max-w-sm">
+            <h3 id="modalTitle" class="text-lg font-bold mb-1 text-pink-500 text-center tracking-tight"></h3>
+            <p id="modalSubtitle" class="text-gray-500 text-[10px] uppercase tracking-widest mb-6 text-center font-bold"></p>
+            <textarea id="modalNoteInput" rows="4" class="w-full px-5 py-4 rounded-xl bg-black border border-pink-900/40 focus:border-pink-500 input-focus text-sm text-white font-medium outline-none" placeholder="Cảm nghĩ của Vân nè..."></textarea>
+            <div class="flex gap-3 mt-8">
+                <button onclick="closeModal()" class="flex-1 py-3 text-gray-500 text-xs font-bold hover:text-white transition-all">Hủy</button>
+                <button id="saveModalBtn" class="flex-1 py-3 btn-bp-gradient rounded-lg text-xs font-bold shadow-lg">Lưu kỷ niệm</button>
             </div>
         </div>
     </div>
 
-    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 btn-pink-gradient px-8 py-3 rounded-full shadow-2xl opacity-0 transition-all z-[100] pointer-events-none text-[11px] font-bold flex items-center gap-2 whitespace-nowrap">
-        <i class="fas fa-magic"></i> <span id="toastMsg">Thành công!</span>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 btn-bp-gradient px-10 py-4 rounded-lg shadow-2xl opacity-0 transition-all z-[100] pointer-events-none text-xs font-bold flex items-center gap-3">
+        <i class="fas fa-star animate-pulse"></i> <span id="toastMsg">Thành công</span>
     </div>
 
     <script>
@@ -240,59 +246,27 @@
 
         function toTitleCase(str) {
             if (!str) return "";
-            return str.toLowerCase().split(' ').map(word => {
-                return word.charAt(0).toUpperCase() + word.slice(1);
+            return str.split(' ').map(word => {
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
             }).join(' ');
         }
 
         let defaultData = [
-            { id: 1, name: "Bánh Bao Phô Mai Thịt Xiên Nướng", address: "134 Phù Đổng", time: "Chiều tối", dish: "Thịt xiên nướng, bánh bao phô mai", status: "wishlist", note: "" },
-            { id: 2, name: "Quán Tú Mơ", address: "Khu vực Ngô Quyền", time: "", dish: "Cà tím Tú Mơ, Vịt lộn nấu bầu", status: "wishlist", note: "" },
-            { id: 3, name: "Lẩu Bò Tiềm Yersin", address: "Yersin", time: "", dish: "Lẩu bò tiềm, Gỏi bò tái chanh", status: "wishlist", note: "" },
-            { id: 4, name: "Bánh Mì Ông Minh", address: "4 Phù Đổng", time: "Sáng/Chiều", dish: "Bánh mì gà xé, Pate truyền thống", status: "visited_ok", note: "Vân khen ngon nhất luôn" },
-            { id: 5, name: "Bánh Mì Nướng Phù Đổng", address: "Gần ngã tư Phù Đổng", time: "", dish: "Bánh mì muối ớt", status: "visited_ok", note: "Ăn vặt cực hợp cho vợ" }
+            { id: 1, name: "Bánh bao phô mai thịt xiên nướng", address: "134 Phù Đổng", time: "Chiều tối", dish: "Thịt xiên nướng, bánh bao phô mai", status: "wishlist", note: "" },
+            { id: 4, name: "Bánh mì Ông Minh", address: "4 Phù Đổng", time: "Sáng/Chiều", dish: "Bánh mì gà xé, Pate truyền thống", status: "visited_ok", note: "Vân khen ngon nhất luôn" },
+            { id: 5, name: "Bánh mì nướng Phù Đổng", address: "Gần ngã tư Phù Đổng", time: "", dish: "Bánh mì muối ớt", status: "visited_ok", note: "Ăn vặt cực hợp cho vợ" }
         ];
 
-        let restaurants = JSON.parse(localStorage.getItem('thuyVanFood_v13'));
+        let restaurants = JSON.parse(localStorage.getItem('thuyVanFood_v14'));
         if (!restaurants || restaurants.length === 0) {
             restaurants = defaultData;
-            localStorage.setItem('thuyVanFood_v13', JSON.stringify(restaurants));
+            localStorage.setItem('thuyVanFood_v14', JSON.stringify(restaurants));
         }
 
         function saveData() {
-            localStorage.setItem('thuyVanFood_v13', JSON.stringify(restaurants));
+            localStorage.setItem('thuyVanFood_v14', JSON.stringify(restaurants));
             renderList(document.getElementById('searchInput').value);
             updateCounts();
-        }
-
-        function downloadBackup() {
-            const dataStr = JSON.stringify(restaurants, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            const link = document.createElement('a');
-            link.setAttribute('href', dataUri);
-            link.setAttribute('download', `FOOD_VAN_${new Date().getTime()}.json`);
-            link.click();
-            showToast('Đã lưu file vào máy rồi nhé! 💾');
-        }
-
-        function importBackup(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-                    if (Array.isArray(importedData)) {
-                        if (confirm('Bạn có muốn nạp dữ liệu từ file này không?')) {
-                            restaurants = importedData;
-                            saveData();
-                            showToast('Đã nạp xong toàn bộ quán! 🎉');
-                        }
-                    }
-                } catch (err) { showToast('File này không đọc được rồi! ❌'); }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
         }
 
         function updateCounts() {
@@ -305,30 +279,9 @@
             currentTab = tab;
             ['wishlist', 'visited_ok', 'visited_bad'].forEach(t => {
                 const el = document.getElementById(`tab-${t}`);
-                el.className = (t === tab) ? 'flex-1 py-2.5 rounded-full text-[10px] font-bold transition-all tab-active' : 'flex-1 py-2.5 rounded-full text-[10px] font-bold text-pink-300 transition-all';
+                el.className = (t === tab) ? 'flex-1 py-3 rounded-lg text-xs font-bold transition-all tab-active' : 'flex-1 py-3 rounded-lg text-xs font-bold text-gray-500 transition-all';
             });
             renderList();
-        }
-
-        function exportToZalo() {
-            let text = `🌸 DANH SÁCH MÓN NGON CỦA VÂN 🌸\n\n`;
-            const groups = { 'wishlist': '📌 ĐANG CHỜ DẮT ĐI', 'visited_ok': '✨ NGON QUÁ TRỜI LUÔN', 'visited_bad': '🍋 KHÔNG HỢP KHẨU VỊ' };
-            Object.keys(groups).forEach(key => {
-                const list = restaurants.filter(r => r.status === key);
-                if(list.length > 0) {
-                    text += `${groups[key]}:\n`;
-                    list.forEach((r, i) => {
-                        text += `${i+1}. ${r.name}\n   - Đ/c: ${r.address}\n   - Món: ${r.dish}${r.note ? `\n   - Note: ${r.note}` : ''}\n\n`;
-                    });
-                }
-            });
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            showToast('Đã copy danh sách để gửi Zalo! 🚀');
         }
 
         function openReviewModal(id, targetStatus = null) {
@@ -337,7 +290,11 @@
             const res = restaurants.find(r => r.id === id);
             document.getElementById('modalNoteInput').value = res.note || "";
             
-            const titles = { 'visited_ok': ['Ăn ngon đúng không nè? ✨', 'Ghi lại món Vân thích nhất nào'], 'visited_bad': ['Tiếc quá quán này 🍋', 'Lần sau mình né quán này nha'], 'default': ['Chỉnh sửa thông tin', 'Cập nhật lại ghi chú cho Vân'] };
+            const titles = { 
+                'visited_ok': ['Tuyệt vời quá! ✨', 'Ghi lại món Vân yêu thích nhất'], 
+                'visited_bad': ['Hơi tiếc một chút 🖤', 'Lần sau mình né quán này ra nhé'], 
+                'default': ['Cập nhật thông tin', 'Thêm ghi chú cho công chúa'] 
+            };
             const set = titles[targetStatus] || titles['default'];
             document.getElementById('modalTitle').innerText = set[0];
             document.getElementById('modalSubtitle').innerText = set[1];
@@ -358,11 +315,11 @@
             if (pendingStatus) restaurants[index].status = pendingStatus;
             saveData();
             closeModal();
-            showToast('Đã lưu kỷ niệm vào sổ rồi! ❤️');
+            showToast('Đã cập nhật kỷ niệm! 🎀');
         }
 
         function deleteItem(id) {
-            if(confirm('Xóa quán này khỏi sổ tay nhé?')) {
+            if(confirm('Xóa quán này khỏi danh sách nhé?')) {
                 restaurants = restaurants.filter(r => r.id !== id);
                 saveData();
             }
@@ -386,49 +343,45 @@
 
             filtered.forEach(res => {
                 const card = document.createElement('div');
-                card.className = 'journal-card p-5 md:p-6';
+                card.className = 'journal-card p-6';
                 
-                // Nội dung chính
-                let contentHTML = `
+                card.innerHTML = `
                     <div class="w-full">
-                        <div class="flex justify-between items-start mb-1.5">
-                            <h3 class="text-[15px] font-bold text-pink-800 leading-snug uppercase tracking-tight">${res.name}</h3>
-                            <span class="text-[9px] font-bold text-pink-300 uppercase whitespace-nowrap ml-3 bg-pink-50 px-2 py-0.5 rounded-md">${res.time || ''}</span>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-bold text-white leading-tight">${res.name}</h3>
+                            <span class="text-[9px] font-bold text-pink-500 uppercase whitespace-nowrap ml-3 bg-pink-500/10 px-2 py-1 rounded border border-pink-500/20">${res.time || 'Mọi lúc'}</span>
                         </div>
-                        <div class="text-[10px] text-pink-400 font-bold mb-3 uppercase tracking-wider flex items-center">
-                            <i class="fas fa-location-dot mr-1.5 text-pink-200"></i> ${res.address}
+                        <div class="text-[11px] text-gray-500 font-semibold mb-4 flex items-center">
+                            <i class="fas fa-map-pin mr-2 text-pink-600 text-[10px]"></i> ${res.address}
                         </div>
-                        <div class="bg-pink-50/50 p-3 rounded-2xl border border-pink-100/50">
-                            <span class="text-[12px] text-pink-900 font-bold leading-relaxed">${res.dish}</span>
+                        <div class="bg-black/40 p-4 rounded-xl border border-pink-900/20 shadow-inner">
+                            <span class="text-[13px] text-pink-100 font-medium leading-relaxed">${res.dish}</span>
                         </div>
-                        ${res.note ? `<p onclick="openReviewModal(${res.id})" class="text-[11px] text-pink-500 font-semibold italic mt-3 line-clamp-2 cursor-pointer bg-white/50 py-1.5 px-3 rounded-xl border border-pink-50 inline-block shadow-sm">💬 "${res.note}"</p>` : ''}
+                        ${res.note ? `<p onclick="openReviewModal(${res.id})" class="text-[12px] text-pink-500 font-medium italic mt-4 line-clamp-2 cursor-pointer bg-pink-500/5 py-2 px-4 rounded-lg border border-pink-500/10 inline-block">✨ "${res.note}"</p>` : ''}
                         
-                        <!-- Khu vực nút tương tác ở góc trái dưới -->
-                        <div class="flex items-center justify-between mt-5">
-                            <div class="flex gap-2">
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex gap-3">
                                 ${res.status === 'wishlist' ? `
-                                    <button onclick="openReviewModal(${res.id}, 'visited_ok')" class="square-btn bg-emerald-400 text-white hover:bg-emerald-500 shadow-md" title="Ngon ✨">
+                                    <button onclick="openReviewModal(${res.id}, 'visited_ok')" class="square-btn bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 hover:bg-emerald-500 hover:text-white" title="Thích cực ✨">
                                         <i class="fas fa-check"></i>
                                     </button>
-                                    <button onclick="openReviewModal(${res.id}, 'visited_bad')" class="square-btn bg-rose-400 text-white hover:bg-rose-500 shadow-md" title="Không hợp 🍋">
-                                        <i class="fas fa-xmark"></i>
+                                    <button onclick="openReviewModal(${res.id}, 'visited_bad')" class="square-btn bg-rose-500/20 text-rose-500 border border-rose-500/30 hover:bg-rose-500 hover:text-white" title="Không hợp 🖤">
+                                        <i class="fas fa-times"></i>
                                     </button>
                                 ` : `
-                                    <button onclick="restaurants[restaurants.findIndex(r=>r.id==${res.id})].status='wishlist'; saveData();" class="flex items-center gap-2 px-3 py-1.5 bg-pink-50 text-pink-400 text-[10px] font-bold uppercase rounded-lg hover:bg-pink-100 transition-all">
-                                        <i class="fas fa-rotate-left"></i> Ăn lại
+                                    <button onclick="restaurants[restaurants.findIndex(r=>r.id==${res.id})].status='wishlist'; saveData();" class="flex items-center gap-2 px-4 py-2 bg-pink-600/10 text-pink-500 text-[10px] font-bold uppercase rounded border border-pink-500/20 hover:bg-pink-600 hover:text-white transition-all">
+                                        <i class="fas fa-redo-alt"></i> Ăn lại
                                     </button>
                                 `}
                             </div>
                             
-                            <div class="flex gap-1">
-                                <button onclick="openReviewModal(${res.id})" class="p-2 text-pink-200 hover:text-pink-400 transition-colors"><i class="fas fa-pen text-[11px]"></i></button>
-                                <button onclick="deleteItem(${res.id})" class="p-2 text-pink-200 hover:text-red-400 transition-colors"><i class="fas fa-trash-alt text-[11px]"></i></button>
+                            <div class="flex gap-2">
+                                <button onclick="openReviewModal(${res.id})" class="p-2 text-gray-600 hover:text-white transition-colors" title="Sửa"><i class="fas fa-edit text-[14px]"></i></button>
+                                <button onclick="deleteItem(${res.id})" class="p-2 text-gray-600 hover:text-rose-500 transition-colors" title="Xóa"><i class="fas fa-trash text-[14px]"></i></button>
                             </div>
                         </div>
                     </div>
                 `;
-                
-                card.innerHTML = contentHTML;
                 container.appendChild(card);
             });
         }
@@ -450,8 +403,56 @@
             restaurants.unshift(newItem);
             saveData();
             this.reset();
-            showToast('Đã thêm món mới cho công chúa rồi! ❤️');
+            showToast('Đã thêm quán mới! 💖');
         };
+
+        function downloadBackup() {
+            const dataStr = JSON.stringify(restaurants, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const link = document.createElement('a');
+            link.setAttribute('href', dataUri);
+            link.setAttribute('download', `DO_NGON_CHO_VO_${new Date().getTime()}.json`);
+            link.click();
+            showToast('Đã lưu file dữ liệu! 💿');
+        }
+
+        function importBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (Array.isArray(importedData)) {
+                        restaurants = importedData;
+                        saveData();
+                        showToast('Đã nạp dữ liệu thành công! 🎧');
+                    }
+                } catch (err) { showToast('File không hợp lệ! ❌'); }
+            };
+            reader.readAsText(file);
+        }
+
+        function exportToZalo() {
+            let text = `🌸 DANH SÁCH ĐỒ NGON CHO VỢ 🌸\n\n`;
+            const groups = { 'wishlist': '📌 DANH SÁCH CHỜ', 'visited_ok': '✨ YÊU THÍCH', 'visited_bad': '🖤 BỎ QUA' };
+            Object.keys(groups).forEach(key => {
+                const list = restaurants.filter(r => r.status === key);
+                if(list.length > 0) {
+                    text += `${groups[key]}:\n`;
+                    list.forEach((r, i) => {
+                        text += `${i+1}. ${r.name}\n   - Đ/c: ${r.address}\n   - Món: ${r.dish}${r.note ? `\n   - Note: ${r.note}` : ''}\n\n`;
+                    });
+                }
+            });
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast('Đã sao chép danh sách! 🚀');
+        }
 
         document.getElementById('searchInput').oninput = (e) => renderList(e.target.value);
         window.onload = () => { updateCounts(); renderList(); };
